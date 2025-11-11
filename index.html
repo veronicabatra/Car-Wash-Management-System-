@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Wash Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-car-wash"></i> Car Wash Management System</h1>
+                <p>Professional Queue Management & Revenue Tracking</p>
+            </div>
+        </header>
+
+        <!-- Main Dashboard -->
+        <main class="dashboard">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="queueCount">0</h3>
+                        <p>Customers in Queue</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalRevenue">$0.00</h3>
+                        <p>Total Revenue</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="customersServed">0</h3>
+                        <p>Customers Served</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="actions-section">
+                <button class="btn btn-primary" onclick="showAddCustomerModal()">
+                    <i class="fas fa-plus"></i> Add Customer
+                </button>
+                <button class="btn btn-success" onclick="completeService()">
+                    <i class="fas fa-check"></i> Complete Service
+                </button>
+                <button class="btn btn-info" onclick="refreshQueue()">
+                    <i class="fas fa-sync"></i> Refresh Queue
+                </button>
+                <button class="btn btn-warning" onclick="downloadReport()">
+                    <i class="fas fa-download"></i> Download Report
+                </button>
+                <button class="btn btn-danger" onclick="resetRevenue()">
+                    <i class="fas fa-dollar-sign"></i> New Revenue
+                </button>
+            </div>
+
+            <!-- Queue Display -->
+            <div class="queue-section">
+                <h2><i class="fas fa-list"></i> Current Queue</h2>
+                <div class="queue-container" id="queueContainer">
+                    <div class="empty-queue">
+                        <i class="fas fa-inbox"></i>
+                        <p>No customers in queue</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Customer Modal -->
+    <div id="addCustomerModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-user-plus"></i> Add New Customer</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <form id="addCustomerForm">
+                <div class="form-group">
+                    <label for="customerName">Customer Name:</label>
+                    <input type="text" id="customerName" required placeholder="Enter customer name">
+                </div>
+                <div class="form-group">
+                    <label for="serviceType">Service Type:</label>
+                    <select id="serviceType" required>
+                        <option value="">Select a service</option>
+                        <option value="1">Basic Wash - $20</option>
+                        <option value="2">Wax + Dent Removing - $35</option>
+                        <option value="3">Vacuum + Polish - $40</option>
+                        <option value="4">Full Package - $60</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add Customer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
